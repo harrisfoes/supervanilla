@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Show and Hide</title>
+    <style type="text/css">
+      body {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 40em;
+        width: 88%;
+      }
+      #pirate-speak {
+        background-color: antiquewhite;
+        margin-top: 16px;
+        padding: 8px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="(buttonClick())">Show</button>
+    <div id="pirate-speak">
+      Hands Letter of Marque chantey man-of-war spanker. Barbary Coast take a
+      caulk rutters cog line. Splice the main brace chantey port parrel careen.
+    </div>
+    <script>
+      console.log("this thing works");
+      const div = document.getElementById("pirate-speak");
+      console.log(div.style);
+      const btn = document.querySelector("button");
+
+      function buttonClick() {
+        if (div.style.display == "none" || div.style.display == "") {
+          div.style.display = "block";
+          btn.innerHTML = "Hide";
+        } else {
+          div.style.display = "none";
+          btn.innerHTML = "Show";
+        }
+      }
+    </script>
+  </body>
+</html>
