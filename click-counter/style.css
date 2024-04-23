@@ -1,0 +1,26 @@
+body {
+  background-color: antiquewhite;
+}
+
+#counter {
+  min-height: 40vh;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#button-div {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
+#button {
+  padding: 8px 32px;
+}
+
+#button:hover {
+  opacity: 75%;
+}
