@@ -1,0 +1,11 @@
+{
+  "name": "decide4me",
+  "version": "1.0.0",
+  "description": "decide for me it is a yes or no",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
