@@ -28,29 +28,49 @@ const values = [
 ];
 
 let deck = [];
+let popped = {};
+
+const cardDrawnDisplay = document.getElementById("card");
+const deckCount = document.getElementById("deck-count");
 
 for (let suit of suits) {
   for (let value of values) {
     deck.push({ suit, value });
   }
 }
+console.log(deck, "deck before");
 
 function popCard(deck) {
-  //if deck is empty then return
-  //splice a random card from the deck
-  //return the removed card
-  //remove the card from the deck
-  console.log("pop the cards");
+  console.log("popcard called");
+  let rand = Math.floor(Math.random() * deck.length);
+
+  if (deck.length === 0) {
+    return;
+  }
+
+  return deck.splice(rand, 1);
+}
+
+function handleClickDraw() {
+  popped = popCard(deck);
+  console.log(popped);
+  console.log(deck, "deck after");
+  cardDrawnDisplay.innerHTML = `<p>${popped[0].value}</p><p>${popped[0].suit}</p>`;
+  deckCount.textContent = `${deck.length}/ 52`;
 }
 
 /*
 
 TODO:
-[ ] implement popcard
-[ ] deck display
+[x] implement popcard
+[x] attach to button
+[x] deck display
 [ ] reset functionality
+[ ] suit filter
 [ ] unit testing
 
 */
 
-console.log(deck);
+document
+  .querySelector("#draw-card")
+  .addEventListener("click", () => handleClickDraw());
