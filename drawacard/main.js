@@ -33,12 +33,16 @@ let popped = {};
 const cardDrawnDisplay = document.getElementById("card");
 const deckCount = document.getElementById("deck-count");
 
-for (let suit of suits) {
-  for (let value of values) {
-    deck.push({ suit, value });
+function createDeck() {
+  let newDeck = [];
+  for (let suit of suits) {
+    for (let value of values) {
+      newDeck.push({ suit, value });
+    }
   }
+
+  return newDeck;
 }
-console.log(deck, "deck before");
 
 function popCard(deck) {
   console.log("popcard called");
@@ -53,10 +57,15 @@ function popCard(deck) {
 
 function handleClickDraw() {
   popped = popCard(deck);
+
+  if (!popped) {
+    return alert("Deck is empty");
+  }
+
   console.log(popped);
   console.log(deck, "deck after");
   cardDrawnDisplay.innerHTML = `<p>${popped[0].value}</p><p>${popped[0].suit}</p>`;
-  deckCount.textContent = `${deck.length}/ 52`;
+  updateDeckCount();
 }
 
 /*
@@ -65,12 +74,29 @@ TODO:
 [x] implement popcard
 [x] attach to button
 [x] deck display
-[ ] reset functionality
+[x] reset functionality
 [ ] suit filter
+  [ ] create suit checkbox
+  [ ] select all default
+  [ ] filter functioning well
 [ ] unit testing
 
 */
 
+function updateDeckCount() {
+  deckCount.textContent = `${deck.length}/ 52`;
+}
+
+function resetDeck() {
+  cardDrawnDisplay.innerHTML = "";
+  deck = createDeck();
+  updateDeckCount();
+}
+
+deck = createDeck();
+
 document
   .querySelector("#draw-card")
   .addEventListener("click", () => handleClickDraw());
+
+document.querySelector("#reset").addEventListener("click", () => resetDeck());
