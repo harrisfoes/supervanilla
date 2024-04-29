@@ -29,9 +29,28 @@ const values = [
 
 let deck = [];
 let popped = {};
+let selectedSuits = [];
 
 const cardDrawnDisplay = document.getElementById("card");
 const deckCount = document.getElementById("deck-count");
+
+const checkbox = document.querySelectorAll(".checkbox");
+const text = document.getElementById("text");
+
+console.log(checkbox);
+
+for (let i = 0; i < checkbox.length; i++) {
+  console.log(checkbox[i]);
+  checkbox[i].addEventListener("change", () => {
+    if (checkbox[i].checked) {
+      console.log(checkbox[i]);
+      selectedSuits.push(checkbox[i].id);
+    } else {
+      selectedSuits.pop(checkbox[i].id);
+    }
+    text.innerHTML = selectedSuits;
+  });
+}
 
 function createDeck() {
   let newDeck = [];
