@@ -1,5 +1,3 @@
-console.log("draw a card");
-
 /*
 There's a deck of cards
 A complete suite of cards
@@ -10,7 +8,7 @@ suite:
 counter
 */
 
-const suits = ["Heart", "Clubs", "Diamonds", "Spades"];
+const suits = ["Hearts", "Clubs", "Diamonds", "Spades"];
 const values = [
   "A",
   "2",
@@ -39,6 +37,7 @@ const text = document.getElementById("text");
 
 console.log(checkbox);
 
+//checking the state for selected suits
 for (let i = 0; i < checkbox.length; i++) {
   console.log(checkbox[i]);
   checkbox[i].addEventListener("change", () => {
@@ -63,22 +62,52 @@ function createDeck() {
   return newDeck;
 }
 
-function popCard(deck) {
+function popCard(deck, suitFilter) {
   console.log("popcard called");
-  let rand = Math.floor(Math.random() * deck.length);
+  //we will only filter cards that are in the deck where suits:on the filter
+  const filteredDeck = deck.filter((items) => {
+    console.log(items.suit.toLowerCase());
+    console.log(suitFilter);
+    return suitFilter.includes(items.suit.toLowerCase());
+  });
 
-  if (deck.length === 0) {
+  console.log(filteredDeck);
+
+  const rand = Math.floor(Math.random() * filteredDeck.length);
+
+  if (deck.length === 0 || filteredDeck.length === 0) {
     return;
   }
 
-  return deck.splice(rand, 1);
+  console.log(rand);
+  console.log(filteredDeck[rand]);
+
+  //find what the index is of this on the overall deck
+  const convertedRand = findMatchingIndex(deck, filteredDeck[rand]);
+
+  return deck.splice(convertedRand, 1);
+}
+
+function findMatchingIndex(deck, value) {
+  for (let i = 0; i < deck.length; i++) {
+    if (deck[i] === value) {
+      return i;
+    }
+  }
+  return -1; // No matching value found
 }
 
 function handleClickDraw() {
-  popped = popCard(deck);
+  popped = popCard(deck, selectedSuits);
 
   if (!popped) {
-    return alert("Deck is empty");
+    if (selectedSuits.length < 1) {
+      alert("Please select suits to choose from");
+    } else if (selectedSuits.length > 0 && deck.length > 1) {
+      alert("No more cards for current suit selection");
+    } else if (deck.length === 0) {
+      alert("Deck is empty");
+    }
   }
 
   console.log(popped);
@@ -86,21 +115,6 @@ function handleClickDraw() {
   cardDrawnDisplay.innerHTML = `<p>${popped[0].value}</p><p>${popped[0].suit}</p>`;
   updateDeckCount();
 }
-
-/*
-
-TODO:
-[x] implement popcard
-[x] attach to button
-[x] deck display
-[x] reset functionality
-[ ] suit filter
-  [ ] create suit checkbox
-  [ ] select all default
-  [ ] filter functioning well
-[ ] unit testing
-
-*/
 
 function updateDeckCount() {
   deckCount.textContent = `${deck.length}/ 52`;
@@ -112,6 +126,8 @@ function resetDeck() {
   updateDeckCount();
 }
 
+//logic start
+
 deck = createDeck();
 
 document
@@ -119,3 +135,17 @@ document
   .addEventListener("click", () => handleClickDraw());
 
 document.querySelector("#reset").addEventListener("click", () => resetDeck());
+
+/*
+
+TODO:
+[x] implement popcard
+[x] attach to button
+[x] deck display
+[x] reset functionality
+[ ] suit filter
+  [x] create suit checkbox
+  [x] filter functioning well
+[x] unit testing
+[ ] polishing
+*/
