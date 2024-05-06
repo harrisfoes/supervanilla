@@ -35,6 +35,9 @@ const deckCount = document.getElementById("deck-count");
 const checkbox = document.querySelectorAll(".checkbox");
 const text = document.getElementById("text");
 
+const drawButton = document.querySelector("#draw-card");
+const resetButton = document.querySelector("#reset");
+
 console.log(checkbox);
 
 //checking the state for selected suits
@@ -130,11 +133,8 @@ function resetDeck() {
 
 deck = createDeck();
 
-document
-  .querySelector("#draw-card")
-  .addEventListener("click", () => handleClickDraw());
-
-document.querySelector("#reset").addEventListener("click", () => resetDeck());
+drawButton.addEventListener("click", () => handleClickDraw());
+resetButton.addEventListener("click", () => resetDeck());
 
 /*
 
