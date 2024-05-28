@@ -19,6 +19,39 @@ body {
   color: hsl(229, 64%, 46%);
 }
 
+#heading {
+  color: whitesmoke;
+  text-transform: uppercase;
+}
+
+#head {
+  display: flex;
+  justify-content: space-between;
+  border: solid 4px var(--header);
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 10px;
+}
+
+#scorebox {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+#scorehead {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.7rem;
+}
+
+#score {
+  font-size: 42px;
+  text-align: center;
+  color: var(--score);
+  font-weight: 600;
+}
+
 /*
 ### Primary
 
