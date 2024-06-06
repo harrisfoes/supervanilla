@@ -66,13 +66,90 @@ body {
 .button {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: white;
   padding: 20px;
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   border-radius: 50%;
 }
 
+.outer-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.outer-ring.paper {
+  /*background-color: blue;*/
+  background: linear-gradient(to right, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+}
+
+.outer-ring.rock {
+  background: linear-gradient(to right, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+}
+
+.outer-ring.scissors {
+  background: linear-gradient(to right, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+}
+
+#choices {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 95%;
+  max-width: 420px;
+}
+
+.top-choices {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.bottom-choices {
+  display: flex;
+  justify-content: center;
+}
+
+.bar {
+  background: #1f2937;
+}
+
+.top-bar {
+  height: 30px;
+  position: absolute;
+  width: 250px;
+  height: 30px;
+  top: 70px;
+  left: 20px;
+  z-index: -1;
+}
+
+.left-bar {
+  position: absolute;
+  width: 200px;
+  height: 45px;
+  transform: skewY(55deg);
+  transform-origin: bottom left;
+  top: 30px;
+  left: 45px;
+  z-index: -1;
+}
+.right-bar {
+  position: absolute;
+  width: 200px;
+  height: 45px;
+  transform: skewY(-55deg);
+  transform-origin: bottom right;
+  top: 30px;
+  right: 45px;
+  z-index: -1;
+}
 /*
 ### Primary
 
