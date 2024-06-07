@@ -105,6 +105,10 @@ body {
   max-width: 420px;
 }
 
+#choices .outer-ring:hover {
+  opacity: 0.75;
+}
+
 .top-choices {
   display: flex;
   justify-content: space-between;
