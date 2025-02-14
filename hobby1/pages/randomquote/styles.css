@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Montserrat, sans-serif;
+}
+
+button {
+  font-family: Montserrat, sans-serif;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
