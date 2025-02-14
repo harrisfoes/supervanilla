@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      button {
+        font-family: Montserrat, sans-serif;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>this is a button</div>
+    <p>This is a number:</p>
+    <p class="number"></p>
+    <button class="add-button">+</button>
+    <button class="minus-button">-</button>
+    <button class="reset">reset</button>
+
+    <div style="padding-top: 50px">
+      <a href="../index.html"> home </a>
+    </div>
+  </body>
+  <script>
+    console.log("hello there harris");
+
+    let number = 0;
+
+    const numberHolder = document.querySelector(".number");
+
+    const addButton = document.querySelector(".add-button");
+    const minusButton = document.querySelector(".minus-button");
+    const resetButton = document.querySelector(".reset");
+
+    numberHolder.innerText = number;
+
+    addButton.addEventListener("click", () => addNumber());
+    minusButton.addEventListener("click", () => subtractNumber());
+    resetButton.addEventListener("click", () => resetNumber());
+
+    function addNumber() {
+      numberHolder.innerText = number += 1;
+    }
+
+    function subtractNumber() {
+      numberHolder.innerText = number -= 1;
+    }
+
+    function resetNumber() {
+      numberHolder.innerText = number = 0;
+    }
+  </script>
+</html>
